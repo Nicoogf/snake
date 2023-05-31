@@ -19,6 +19,9 @@ background-color: rgb(33, 34, 65);
     height: 70vmin;
     background-color: #293447;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .game-details{
@@ -28,4 +31,16 @@ background-color: rgb(33, 34, 65);
     padding: 20px 27px;
     display: flex;
     justify-content: space-between;
+}
+
+.play-board{
+    width:100%;
+    height: 100%;
+    background: #212837;
+    display: grid;
+    grid-template: repeat(30 , 1fr) / repeat(30,1fr);
+}
+
+.play-board .food{
+    background-color: #FF003D;
 }
