@@ -4,6 +4,7 @@ const playBoard = document.querySelector(".play-board")
 
 let foodX  , foodY ; 
 let snakeX  = 5, snakeY= 10 ; 
+let snakeBody= [] ;
 let velocityX = 0 , velocityY = 0;
 
 const changeFoodPosition = () =>{
@@ -39,16 +40,28 @@ const initGame = () =>{
 
     if( snakeX === foodX && snakeY === foodY ){
         changeFoodPosition();
+        snakeBody.push([foodX,foodY])  //Para pushear la posicion de la comida al cuerpo del skane
+        console.log(snakeBody)
     }
-    console.log(snakeX ,snakeY) 
+  
+    for(let i = snakeBody.length -1 ; i > 0; i--){
+        snakeBody[i] = snakeBody [ i - 1 ] // Se desplaza hacia adelante los valores del elemento del body
+   }
 
-    console.log(foodX ,foodY) 
+
+    snakeBody[0] = [snakeX, snakeY] // Se setea el primer elemento
+
+
     //Se actualiza la posicion del snake
-
     snakeX += velocityX;    
     snakeY += velocityY;
 
-    htmlMarkup += `<div class="head" style="grid-area:${snakeY} / ${snakeX}"> </div>`
+    for(let i = 0 ; i < snakeBody.length; i++ ){
+        //Se agrega un div al cuerpo del snake
+        htmlMarkup += `<div class="head" style="grid-area:${snakeBody[i][1]} / ${snakeBody[i][0]}"> </div>`
+    }
+
+ 
     playBoard.innerHTML =  htmlMarkup;
 }
 
