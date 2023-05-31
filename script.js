@@ -1,5 +1,7 @@
 
 const playBoard = document.querySelector(".play-board")
+const scoreElement = document.querySelector(".score")
+const highScoreElement = document.querySelector(".high-score")
 
 let gameOver = false ;
 let foodX  , foodY ; 
@@ -7,7 +9,12 @@ let snakeX  = 5, snakeY= 10 ;
 let snakeBody= [] ;
 let velocityX = 0 , velocityY = 0;
 let setIntervalID ;
+let score = 0 ;
 
+
+let highScore = localStorage.getItem("high-score") || 0;  //El puntaje 
+highScoreElement.innerText = `High Score : ${highScore}`
+ 
 const changeFoodPosition = () =>{
 
     //Pasa al azar un valor entre 0 y 30 para la comida 
@@ -52,7 +59,18 @@ const initGame = () =>{
     if( snakeX === foodX && snakeY === foodY ){
         changeFoodPosition();
         snakeBody.push([foodX,foodY])  //Para pushear la posicion de la comida al cuerpo del skane
-        console.log(snakeBody)
+        score ++ ;  //Incrementa puntaje en 1
+
+        highScore = score >= highScore ? 
+                    score : highScore;
+
+
+        localStorage.setItem("high-score" , highScore)
+
+
+
+        scoreElement.innerText = `Score : ${score}`
+        highScoreElement.innerText = `High Score : ${highScore}`
     }
   
     for(let i = snakeBody.length -1 ; i > 0; i--){
