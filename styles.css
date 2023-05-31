@@ -1,0 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Open Sans', sans-serif;
+}
+
+body{
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+background-color: rgb(33, 34, 65);
+}
+
+
+.wrapper{
+    width: 65vmin;
+    height: 70vmin;
+    background-color: #293447;
+    border-radius: 5px;
+}
+
+.game-details{
+    color:#B8C6DC;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 20px 27px;
+    display: flex;
+    justify-content: space-between;
+}
