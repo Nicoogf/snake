@@ -2,6 +2,7 @@
 const playBoard = document.querySelector(".play-board")
 const scoreElement = document.querySelector(".score")
 const highScoreElement = document.querySelector(".high-score")
+const controls = document.querySelectorAll(".controls i")
 
 let gameOver = false ;
 let foodX  , foodY ; 
@@ -50,6 +51,12 @@ const changueDirection = (e) =>{
     }
     
 }
+
+controls.forEach( key =>{
+    key.addEventListener("click" , () => changueDirection({
+        key: key.dataset.key
+    }))
+})
 
 const initGame = () =>{
     if(gameOver) return handleGameOver();
