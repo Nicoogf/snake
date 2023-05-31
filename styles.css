@@ -44,3 +44,7 @@ background-color: rgb(33, 34, 65);
 .play-board .food{
     background-color: #FF003D;
 }
+
+.play-board .head{
+    background-color: #60CBFF;
+}
